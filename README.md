@@ -1,0 +1,97 @@
+Loan and Emotion Data Analysis
+This project analyzes loan and emotional pattern data to explore correlations between user emotions, loan disbursement, and performance over time. The project involves data exploration, cleaning, and analysis to uncover insights on loan behaviors and emotional influence on lending outcomes.
+
+Setup Instructions
+Prerequisites
+SQLite: Use SQLite to run SQL queries and work with databases.
+DB Browser for SQLite: We recommend using DB Browser for SQLite to easily manage and query SQLite databases.
+Python Environment: Ensure you have a Python environment with libraries such as pandas, matplotlib, and seaborn installed for analysis.
+Steps
+Clone the GitHub Repository:
+
+bash
+Copy code
+git clone https://github.com/your-repo/loan-emotion-analysis.git
+cd loan-emotion-analysis
+Setting Up the Database:
+
+Use DB Browser for SQLite to open and explore the SQLite database provided in the repository.
+Run the SQL queries provided in the data_input folder (emotional_data.sql, loans.sql, and users.sql) to generate the data for analysis.
+Data Frames:
+
+After running the SQL scripts, export the resulting tables as CSV files for further analysis.
+The CSV files are located in the csv_output folder.
+Run the Analysis:
+
+Open the analysis notebook (analysis_notebook.ipynb) in Jupyter and execute the cells.
+The notebook contains code for visualizations, data cleaning steps, and the final analysis. You can choose to use either the SQL scripts or the CSV files for the analysis.
+Assumptions
+Loans Data
+Null Values: In the loans data, the paid_date column has null values where loans were not paid. We kept these as null because filling them with placeholder values could affect time-related visualizations.
+Data Cleaning:
+We checked for overlapping loans, ensuring no user had two loans issued with overlapping dates.
+Duplicates in the data were handled by identifying repeated loan records based on the same loan_id, user_id, and issue_date.
+Inaccurate loan amounts, invalid statuses, and other potential data errors were checked and cleaned.
+Emotional Data
+Duplicates: We assumed that duplicate emotional records with the same timestamp from the same user were data entry errors. These were removed to avoid skewing the analysis.
+Missing Data:
+We kept missing values as null in columns like relationship, location, and weather, assuming that users did not provide this information.
+In cases of missing primary_emotion or time_of_day, we flagged these records for potential errors but did not remove them, as they were critical for the emotional analysis.
+Users Data
+Missing Data: We assumed that missing values in fields like score, approved_date, credit_limit, and interest_rate indicated that users did not receive loans.
+Null Values: We maintained nulls for fields like denied_date, assuming that loans without this value were not denied yet.
+For more detailed information on the data cleaning process, refer to the SQL scripts provided in the sql_queries folder, which include:
+
+loans.sql: Covers the missingness analysis, quality checks for loan data, and cleaning steps.
+emotional_data.sql: Includes steps for handling missingness, duplicates, and data integrity checks in emotional data.
+users.sql: Describes data quality checks and cleaning steps for the user data.
+SQL Queries
+The SQL scripts in the data_input folder perform various data quality checks, such as:
+
+Loans Data:
+Missing value analysis.
+Checking for overlapping loans.
+Identifying duplicate loan records.
+Verifying loan amount consistency and valid date ranges.
+Emotional Data:
+Handling missing values for primary_emotion, time_of_day, and other columns.
+Dealing with duplicate emotional records with the same timestamp for the same user.
+Users Data:
+Handling missing values for fields like score, credit_limit, and interest_rate.
+Ensuring valid date formats for approved_date and denied_date.
+For example, in the loans.sql file, the following query checks for missing values in key columns:
+
+sql
+Copy code
+SELECT 
+    'loan_id' AS column_name,
+    100.0 * SUM(CASE WHEN loan_id IS NULL THEN 1 ELSE 0 END) / COUNT(*) AS missing_percentage
+FROM loans
+UNION ALL
+SELECT 
+    'user_id' AS column_name,
+    100.0 * SUM(CASE WHEN user_id IS NULL THEN 1 ELSE 0 END) / COUNT(*) AS missing_percentage
+FROM loans;
+In the emotional_data.sql file, the following query identifies duplicate emotions based on the same timestamp for the same user:
+
+sql
+Copy code
+WITH DuplicateEntries AS (
+    SELECT 
+        user_id,
+        timestamp,
+        COUNT(*) as duplicate_count
+    FROM emotional_data
+    GROUP BY user_id, timestamp
+    HAVING COUNT(*) > 1
+)
+SELECT *
+FROM emotional_data
+WHERE (user_id, timestamp) IN (
+    SELECT user_id, timestamp
+    FROM DuplicateEntries
+);
+Conclusion
+This project applies robust data cleaning techniques and in-depth analysis to explore the relationship between emotional patterns and loan performance. By following the instructions and running the provided scripts and notebook, you will be able to reproduce the insights generated and visualize key findings.
+
+If you encounter any issues, feel free to submit them in the Issues section of this repository.
