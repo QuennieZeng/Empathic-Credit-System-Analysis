@@ -20,10 +20,10 @@ This project aims to analyze the relationship between loan disbursement and user
 
 2. **Data Frames**:
     - After running the SQL scripts, export the resulting tables as CSV files for further analysis.
-    - The CSV files are located in the `csv_output` folder. You can use them in the analysis notebook for visualization and reporting.
+    - The CSV files are located in the `data_input` folder. You can use them in the analysis notebook for visualization and reporting.
 
 3. **Run the Analysis**:
-    - Open the analysis notebook (`analysis_notebook.ipynb`) in Jupyter and execute the cells.
+    - Open the analysis notebook (`analysis_notebook.ipynb`) located in the `analysis` folder on Jupyter and execute the cells.
     - The notebook contains code for visualizations, data cleaning steps, and the final analysis. You can choose to use either the SQL scripts or the CSV files for the analysis.
 
 ---
@@ -62,7 +62,7 @@ For more detailed information on the data cleaning process, refer to the SQL scr
 
 ### SQL Queries
 
-The SQL scripts in the `data_input` folder perform various data quality checks, such as:
+The SQL scripts in the `sql` folder checks many dataa cleaning situations and perform various data quality checks, such as:
 
 #### Loans Data:
 - Missing value analysis.
