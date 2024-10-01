@@ -8,7 +8,7 @@ This project aims to analyze the relationship between loan disbursement and user
 
 - **SQLite**: Use SQLite to run SQL queries and work with databases.
 - **DB Browser for SQLite**: We recommend using DB Browser for SQLite to easily manage and query SQLite databases.
-- **Python Environment**: Ensure you have a Python environment with libraries such as `pandas`, `matplotlib`, and `seaborn` installed for analysis.
+- **Python Environment**: Ensure you have a Python environment with libraries such as `pandas`, `matplotlib`, `seaborn`, and other required libraries installed for analysis.
 
 ### Steps
 
