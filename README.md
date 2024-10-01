@@ -1,4 +1,5 @@
-# Loan and Emotion Data Analysis
+# Empathic Credit System Analysis
+
 
 This project aims to analyze the relationship between loan disbursement and user emotions. We perform data cleaning, quality checks, and explore the connections between emotional patterns and loan behaviors over time.
 
