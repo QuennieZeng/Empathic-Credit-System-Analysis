@@ -51,7 +51,6 @@ This project aims to analyze the relationship between loan disbursement and user
 - **Null Values**: I maintained nulls for fields like `denied_date`, assuming that loans without this value were not denied yet.
 
 ---
-For more detailed information on the data cleaning process, refer to the SQL scripts provided in the sql_queries folder, which include:
 
 ## Data Cleaning Process
 
