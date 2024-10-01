@@ -1,14 +1,14 @@
 # Empathic Credit System Analysis
 
 
-This project aims to analyze the relationship between loan disbursement and user emotions. We perform data cleaning, quality checks, and explore the connections between emotional patterns and loan behaviors over time.
+This project aims to analyze the relationship between loan disbursement and user emotions. I perform data cleaning, quality checks, and explore the connections between emotional patterns and loan behaviors over time.
 
 ## Setup Instructions
 
 ### Prerequisites
 
 - **SQLite**: Use SQLite to run SQL queries and work with databases.
-- **DB Browser for SQLite**: We recommend using DB Browser for SQLite to easily manage and query SQLite databases.
+- **DB Browser for SQLite**: I recommend using DB Browser for SQLite to easily manage and query SQLite databases.
 - **Python Environment**: Ensure you have a Python environment with libraries such as `pandas`, `matplotlib`, `seaborn`, and other required libraries installed for analysis.
 
 ### Steps
@@ -32,23 +32,23 @@ This project aims to analyze the relationship between loan disbursement and user
 
 ### Loans Data
 
-- **Null Values**: In the `loans` data, the `paid_date` column has null values where loans were not paid. We kept these as null because filling them with placeholder values could affect time-related visualizations.
+- **Null Values**: In the `loans` data, the `paid_date` column has null values where loans were not paid. I kept these as null because filling them with placeholder values could affect time-related visualizations.
 - **Data Cleaning**:
-    - We checked for overlapping loans, ensuring no user had two loans issued with overlapping dates.
+    - I checked for overlapping loans, ensuring no user had two loans issued with overlapping dates.
     - Duplicates in the data were handled by identifying repeated loan records based on the same `loan_id`, `user_id`, and `issue_date`.
     - Inaccurate loan amounts, invalid statuses, and other potential data errors were checked and cleaned.
 
 ### Emotional Data
 
-- **Duplicates**: We assumed that duplicate emotional records with the same timestamp from the same user were data entry errors. These were removed to avoid skewing the analysis.
+- **Duplicates**: I assumed that duplicate emotional records with the same timestamp from the same user were data entry errors. These were removed to avoid skewing the analysis.
 - **Missing Data**:
-    - We kept missing values as null in columns like `relationship`, `location`, and `weather`, assuming that users did not provide this information.
-    - In cases of missing `primary_emotion` or `time_of_day`, we flagged these records for potential errors but did not remove them, as they were critical for the emotional analysis.
+    - I kept missing values as null in columns like `relationship`, `location`, and `weather`, assuming that users did not provide this information.
+    - In cases of missing `primary_emotion` or `time_of_day`, I flagged these records for potential errors but did not remove them, as they were critical for the emotional analysis.
 
 ### Users Data
 
-- **Missing Data**: We assumed that missing values in fields like `score`, `approved_date`, `credit_limit`, and `interest_rate` indicated that users did not receive loans.
-- **Null Values**: We maintained nulls for fields like `denied_date`, assuming that loans without this value were not denied yet.
+- **Missing Data**: I assumed that missing values in fields like `score`, `approved_date`, `credit_limit`, and `interest_rate` indicated that users did not receive loans.
+- **Null Values**: I maintained nulls for fields like `denied_date`, assuming that loans without this value were not denied yet.
 
 ---
 For more detailed information on the data cleaning process, refer to the SQL scripts provided in the sql_queries folder, which include:
