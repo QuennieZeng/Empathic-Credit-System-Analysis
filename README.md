@@ -62,7 +62,7 @@ For more detailed information on the data cleaning process, refer to the SQL scr
 
 ### SQL Queries
 
-The SQL scripts in the `sql` folder checks many dataa cleaning situations and perform various data quality checks, such as:
+The SQL scripts in the `sql` folder checks many data cleaning situations and perform various data quality checks, such as:
 
 #### Loans Data:
 - Missing value analysis.
